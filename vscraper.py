@@ -1,4 +1,14 @@
 #!/usr/bin/env python3
+"""
+VScraper - Video Download Script
+
+A utility for safely downloading videos using yt-dlp with proper filename handling
+and conda environment management.
+
+Author: John Engates
+License: MIT
+"""
+
 import sys
 import subprocess
 import argparse
