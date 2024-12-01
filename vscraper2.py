@@ -21,13 +21,15 @@ def ensure_conda_env():
 
 def download_video(url):
     try:
-        # Use yt-dlp with options to restrict filename length and handle special characters
+        # Use yt-dlp with options to restrict filename length and force MP4
         subprocess.run([
             'yt-dlp',
             '-o', '%(title).100B-%(id)s.%(ext)s',  # Limit title to 100 chars + video ID
             '--restrict-filenames',  # Replace special chars with underscore
             '--no-part',  # Don't use .part files
             '--no-mtime',  # Don't use modification time
+            '-f', 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/mp4',  # Force MP4
+            '--merge-output-format', 'mp4',  # Ensure final format is MP4
             url
         ], check=True)
         return True
